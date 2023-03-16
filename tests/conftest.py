@@ -15,6 +15,10 @@ class ApiClient:
         url = f"{self.url}{path}"
         return requests.get(url=url, params=params, headers=headers)
 
+    def put(self, path=None, params=None, data=None, json=None, headers=None):
+        url = f"{self.url}{path}"
+        return requests.put(url=url, json=None, headers=headers)
+
 
 @pytest.fixture
 def app():

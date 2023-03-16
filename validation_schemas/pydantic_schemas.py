@@ -44,7 +44,7 @@ class UserSchema(BaseModel):
             raise ValueError("input at least 'gender' or 'status'")
 
 
-class PostsGet(BaseModel):
+class GetPosts(BaseModel):
     userId: int = Field(ge=1, le=10)
     id: int = Field(gt=0, lt=101)
     title: str = Field(max_length=100)
