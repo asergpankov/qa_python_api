@@ -1,23 +1,7 @@
 import pytest
-
 import requests
 
-
-class ApiClient:
-    def __init__(self, url):
-        self.url = url
-
-    def post(self, path=None, params=None, data=None, json=None, headers=None):
-        url = f"{self.url}{path}"
-        return requests.post(url=url, params=params, data=data, json=json, headers=headers)
-
-    def get(self, path=None, params=None, headers=None):
-        url = f"{self.url}{path}"
-        return requests.get(url=url, params=params, headers=headers)
-
-    def put(self, path=None, params=None, data=None, json=None, headers=None):
-        url = f"{self.url}{path}"
-        return requests.put(url=url, json=None, headers=headers)
+from api_client import ApiClient
 
 
 @pytest.fixture
