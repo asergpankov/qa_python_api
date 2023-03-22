@@ -51,13 +51,13 @@ class GetPosts(BaseModel):
     body: str = Field(max_length=300)
 
     @validator("title")
-    def title_without_punctuation_symbols(cls, title):
+    def expect_title_without_punctuation_symbols(cls, title):
         if any(p in title for p in string.punctuation):
             raise ValidationError("'title' must not include punctuation symbols")
         return title
 
     @validator("body")
-    def body_without_digits(cls, body):
+    def expect_body_without_digits(cls, body):
         if any(d in body for d in string.digits):
-            raise ValidationError("'body' must not include digits")
+            raise ValidationError("'body' must not include any digits")
         return body

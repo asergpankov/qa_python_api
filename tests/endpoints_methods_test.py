@@ -15,8 +15,8 @@ class TestEndpointsMethods:
         """Check all endpoints with a get method works fine
         1. Status code of all get requests must be == 200
         """
-        code = app.get(endpoint)
-        assert code.status_code == 200, f'[WARN] -- Endpoint {endpoint} response code {code} != 200'
+        code, body = app.get(endpoint)
+        assert code == 200, f'[WARN] -- Endpoint {endpoint} response code {code} != 200'
 
     @pytest.mark.parametrize('endpoint', [
         '/posts',

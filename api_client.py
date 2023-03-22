@@ -5,22 +5,27 @@ class ApiClient:
     def __init__(self, url):
         self.url = url
 
-    def post(self, endpoint=None, params=None, data=None, json=None, headers=None):
+    def post(self, endpoint=None, **kwargs):
         url = f"{self.url}{endpoint}"
-        return requests.post(url=url, params=params, data=data, json=json, headers=headers)
+        resp = requests.post(url=url, **kwargs)
+        return resp.status_code, resp.json()
 
-    def get(self, endpoint=None, params=None, headers=None):
+    def get(self, endpoint=None, **kwargs):
         url = f"{self.url}{endpoint}"
-        return requests.get(url=url, params=params, headers=headers)
+        resp = requests.get(url=url, **kwargs)
+        return resp.status_code, resp.json()
 
-    def options(self, endpoint=None, params=None, headers=None):
+    def options(self, endpoint=None, **kwargs):
         url = f"{self.url}{endpoint}"
-        return requests.options(url=url, params=params, headers=headers)
+        return requests.options(url=url, **kwargs)
 
-    def put(self, endpoint=None, params=None, data=None, json=None, headers=None):
+    def put(self, endpoint=None, **kwargs):
         url = f"{self.url}{endpoint}"
-        return requests.put(url=url, json=None, headers=headers)
+        resp = requests.put(url=url, **kwargs)
+        return resp.status_code, resp.json()
 
-    def delete(self, endpoint=None, params=None, headers=None):
+    def delete(self, endpoint=None, **kwargs):
         url = f"{self.url}{endpoint}"
-        return requests.delete(url=url, params=params, headers=headers)
+        resp = requests.delete(url=url, **kwargs)
+        return resp.status_code, resp.json()
+

@@ -7,7 +7,6 @@ class TestEndpointsSchemas:
         """Check all posts with Pydantic schema validator
         1. Each post's structure corresponds to accurate pydantic schema
         """
-        res = app.get('/posts')
-        validated_res = [GetPosts(**item) for item in res.json()]
-        assert validated_res, "[WARN] -- post data does not correspond to schema validator"
+        code, body = app.get('/posts')
+        assert [GetPosts(**item) for item in body], "[WARN] -- post data does not correspond to schema validator"
     # todo add schema check for another endpoints
